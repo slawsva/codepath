@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>Подбор курсов — CodePath</title>
+  <meta name="description" content="Соберите учебный маршрут и проверьте бюджет.">
+  <script src="js/theme.js"></script>
+  <link rel="icon" href="images/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/shop.css">
+  <script src="vendor/bootstrap.bundle.min.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/store.js" defer></script>
+  <script src="js/site.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/commerce.js" defer></script>
+</head>
+<body id="top" data-page="builder">
+  <a class="skip-link" href="#main">К содержанию</a>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg container" aria-label="Основная навигация">
+      <a class="navbar-brand" href="index.html"><span class="brand-mark" aria-hidden="true">⌘</span><span>Code<span class="brand-path">Path</span></span></a>
+      <div class="header-tools">
+        <a class="btn btn-line account-link" href="account.html" aria-label="Личный кабинет"><span data-icon="user" data-icon-class="" aria-hidden="true"></span><span class="account-label">Кабинет</span></a>
+        <a class="btn btn-icon cart-link" id="cart-link" href="order.html" aria-label="Корзина"><span data-icon="cart" data-icon-class="" aria-hidden="true"></span><span id="cart-count" class="cart-count" hidden>0</span></a>
+        <button class="btn btn-icon" id="open-search" type="button" aria-label="Поиск по сайту" aria-haspopup="dialog" title="Поиск"><span data-icon="search" data-icon-class="" aria-hidden="true"></span></button>
+        <button class="btn btn-icon" type="button" data-theme-toggle aria-label="Тёмная тема" aria-pressed="false" title="Сменить тему"><span data-icon="moon" data-icon-class="theme-moon" aria-hidden="true"></span><span data-icon="sun" data-icon-class="theme-sun" aria-hidden="true"></span></button>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Меню"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+            <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
+            <li class="nav-item"><a class="nav-link active" href="builder.html" aria-current="page">Подбор</a></li>
+            <li class="nav-item"><a class="nav-link" href="learning.html">Как учимся</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <nav class="container breadcrumb-wrap" aria-label="Хлебные крошки">
+      <ol class="breadcrumb mb-0"><li class="breadcrumb-item"><a href="index.html">Главная</a></li><li class="breadcrumb-item active" aria-current="page">Подбор курсов</li></ol>
+    </nav>
+    <section class="page-intro shop-intro"><div class="container"><h1>Подбор курсов</h1><p class="intro">Соберите маршрут под свою цель. Добавляйте и заменяйте курсы, пока программа и сумма вас не устроят.</p></div></section>
+    <section class="section inner-body" aria-labelledby="route-title"><div class="container shop-grid">
+      <div class="shop-panel">
+        <h2 id="route-title">Ваш маршрут</h2>
+        <div id="route-list" class="route-list"></div>
+        <form id="add-course-form">
+          <label for="route-picker" class="form-label">Добавить курс</label>
+          <div class="route-row"><select id="route-picker" class="form-select" required></select><button type="submit" id="route-add" class="btn btn-accent">Добавить</button></div>
+        </form>
+      </div>
+      <aside class="shop-panel">
+        <h2>Бюджет</h2>
+        <label for="route-budget" class="form-label">Лимит, ₽</label>
+        <input id="route-budget" class="form-control" type="number" min="0" max="1000000" step="100" placeholder="Например, 25000">
+        <div class="form-check my-3"><input id="prior-skills" class="form-check-input" type="checkbox"><label for="prior-skills" class="form-check-label">У меня уже есть нужная подготовка</label></div>
+        <ul id="route-advice" class="route-advice" aria-live="polite"></ul>
+        <p class="total-line"><strong>Итого</strong><strong id="route-total">0 ₽</strong></p>
+        <div class="action-group">
+          <button id="route-buy" class="btn btn-accent" type="button">В корзину</button>
+          <button id="route-save" class="btn btn-line" type="button">Сохранить в кабинет</button>
+          <button id="route-copy" class="btn btn-line" type="button">Скопировать ссылку</button>
+          <button id="route-download" class="btn btn-line" type="button">Скачать список</button>
+        </div>
+        <input id="route-link" class="form-control mt-3" aria-label="Ссылка на маршрут" readonly hidden>
+        <p id="route-status" class="inline-status" role="status" hidden></p>
+      </aside>
+    </div></section>
+    <section class="section ready-section" aria-labelledby="ready-title"><div class="container">
+      <div class="section-heading"><h2 id="ready-title">Готовые маршруты</h2></div>
+      <div class="row g-4" data-track-cards></div>
+    </div></section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-12 col-md-5">
+          <a class="footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true">⌘</span><span>Code<span class="brand-path">Path</span></span></a>
+          <p class="footer-description">Курсы по программированию и анализу данных. Соберите маршрут под свою задачу и завершите его собственным проектом.</p>
+        </div>
+        <nav class="col-6 col-md-3" aria-label="Навигация в футере">
+          <h2>Разделы</h2>
+          <ul class="list-unstyled mb-0">
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="builder.html">Подбор курсов</a></li>
+            <li><a href="learning.html">Как учимся</a></li>
+            <li><a href="projects.html">Проекты</a></li>
+          </ul>
+        </nav>
+        <div class="col-6 col-md-4 footer-contact">
+          <h2>Связь</h2>
+          <p><a href="contacts.html">Команда и график</a></p>
+          <p><a href="contacts.html#location">Москва, Нижняя Сыромятническая, 10</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 CodePath. Все права защищены.</p>
+        <a class="btn back-top" href="#top" aria-label="Наверх" title="Наверх"><span data-icon="up" data-icon-class="" aria-hidden="true"></span></a>
+      </div>
+    </div>
+  </footer>
+  <dialog class="search-dialog" id="site-search" aria-labelledby="search-title">
+    <div class="search-dialog-head"><h2 id="search-title">Поиск по сайту</h2>
+      <form method="dialog"><button class="btn btn-icon" aria-label="Закрыть поиск"><span data-icon="close" data-icon-class="" aria-hidden="true"></span></button></form>
+    </div>
+    <form role="search"><label for="site-query" class="visually-hidden">Введите запрос</label>
+      <input class="form-control" type="search" id="site-query" placeholder="Курс, раздел или тема" autocomplete="off">
+    </form>
+    <p id="site-results-count" role="status"></p><ul id="site-results" class="list-unstyled"></ul>
+  </dialog>
+  <p class="site-status" id="site-status" role="status"></p>
+</body>
+</html>

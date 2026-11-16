@@ -5,36 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f7fb">
   <title>Программа курса — CodePath</title>
-  <meta name="description" content="Программа, требования и стоимость курса CodePath.">
+  <meta name="description" content="Программа, требования и цена курса.">
   <script src="js/theme.js"></script>
   <link rel="icon" href="images/mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="vendor/bootstrap.min.css">
   <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/shop.css">
   <script src="vendor/bootstrap.bundle.min.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/store.js" defer></script>
+  <script src="js/site.js" defer></script>
   <script src="js/app.js" defer></script>
+  <script src="js/commerce.js" defer></script>
 </head>
 <body id="top" data-page="product">
   <a class="skip-link" href="#main">К содержанию</a>
   <header class="site-header">
     <nav class="navbar navbar-expand-lg container" aria-label="Основная навигация">
       <a class="navbar-brand" href="index.html"><span class="brand-mark" aria-hidden="true">⌘</span><span>Code<span class="brand-path">Path</span></span></a>
+      <div class="header-tools">
+        <a class="btn btn-line account-link" href="account.html" aria-label="Личный кабинет"><span data-icon="user" data-icon-class="" aria-hidden="true"></span><span class="account-label">Кабинет</span></a>
+        <a class="btn btn-icon cart-link" id="cart-link" href="order.html" aria-label="Корзина"><span data-icon="cart" data-icon-class="" aria-hidden="true"></span><span id="cart-count" class="cart-count" hidden>0</span></a>
+        <button class="btn btn-icon" id="open-search" type="button" aria-label="Поиск по сайту" aria-haspopup="dialog" title="Поиск"><span data-icon="search" data-icon-class="" aria-hidden="true"></span></button>
+        <button class="btn btn-icon" type="button" data-theme-toggle aria-label="Тёмная тема" aria-pressed="false" title="Сменить тему"><span data-icon="moon" data-icon-class="theme-moon" aria-hidden="true"></span><span data-icon="sun" data-icon-class="theme-sun" aria-hidden="true"></span></button>
+      </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Меню"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="menu">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
             <li class="nav-item"><a class="nav-link active" href="catalog.html" aria-current="location">Каталог</a></li>
+            <li class="nav-item"><a class="nav-link" href="builder.html">Подбор</a></li>
             <li class="nav-item"><a class="nav-link" href="learning.html">Как учимся</a></li>
-            <li class="nav-item"><a class="nav-link" href="projects.html">Проекты</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
         </ul>
-        <div class="header-tools">
-          <a class="btn btn-line header-cta" href="order.html">Записаться <span aria-hidden="true">↗</span></a>
-          <a class="btn btn-icon" href="catalog.html?saved=1#catalog-list" aria-label="Избранные курсы" title="Избранные курсы"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h12v16l-6-4-6 4Z"/></svg></a>
-          <button class="btn btn-icon" type="button" data-theme-toggle aria-label="Тёмная тема" aria-pressed="false" title="Сменить тему"><svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M20.1 15.5A8.5 8.5 0 0 1 8.5 3.9 8.5 8.5 0 1 0 20.1 15.5Z"/></svg><svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg></button>
-        </div>
       </div>
     </nav>
   </header>
   <main id="main" tabindex="-1">
+    <nav class="container breadcrumb-wrap" aria-label="Хлебные крошки">
+      <ol class="breadcrumb mb-0"><li class="breadcrumb-item"><a href="index.html">Главная</a></li><li class="breadcrumb-item"><a href="catalog.html">Каталог</a></li><li class="breadcrumb-item active" id="product-crumb" aria-current="page">Программа курса</li></ol>
+    </nav>
     <div id="course">
       <div class="container"><noscript><p class="alert alert-warning mt-3">Для этой страницы нужен JavaScript. Включите его в браузере и обновите страницу.</p></noscript></div>
     </div>
@@ -51,32 +61,38 @@
       <div class="row gy-4">
         <div class="col-12 col-md-5">
           <a class="footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true">⌘</span><span>Code<span class="brand-path">Path</span></span></a>
-          <p class="footer-description">CodePath — учебный каталог курсов по программированию и анализу данных. Здесь можно сравнить программы, выбрать подходящий уровень и посмотреть примеры итоговых работ.</p>
+          <p class="footer-description">Курсы по программированию и анализу данных. Соберите маршрут под свою задачу и завершите его собственным проектом.</p>
         </div>
-        <nav class="col-6 col-md-3" aria-label="Навигация в подвале">
+        <nav class="col-6 col-md-3" aria-label="Навигация в футере">
           <h2>Разделы</h2>
           <ul class="list-unstyled mb-0">
-            <li><a href="index.html">Главная</a></li>
             <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="builder.html">Подбор курсов</a></li>
             <li><a href="learning.html">Как учимся</a></li>
             <li><a href="projects.html">Проекты</a></li>
           </ul>
         </nav>
-        <div class="col-6 col-md-4">
-          <h2>Участникам</h2>
-          <ul class="list-unstyled mb-0">
-            <li><a href="catalog.html?saved=1#catalog-list">Избранные курсы</a></li>
-            <li><a href="order.html">Запись на курс <span aria-hidden="true">↗</span></a></li>
-            <li><a href="index.html#faq">Вопросы и ответы</a></li>
-          </ul>
-          <p class="footer-author">Святослав Сакулин · группа 12-40</p>
+        <div class="col-6 col-md-4 footer-contact">
+          <h2>Связь</h2>
+          <p><a href="contacts.html">Команда и график</a></p>
+          <p><a href="contacts.html#location">Москва, Нижняя Сыромятническая, 10</a></p>
         </div>
       </div>
       <div class="footer-bottom">
         <p class="footer-copyright">© 2026 CodePath. Все права защищены.</p>
-        <a href="#top">Наверх <span aria-hidden="true">↑</span></a>
+        <a class="btn back-top" href="#top" aria-label="Наверх" title="Наверх"><span data-icon="up" data-icon-class="" aria-hidden="true"></span></a>
       </div>
     </div>
   </footer>
+  <dialog class="search-dialog" id="site-search" aria-labelledby="search-title">
+    <div class="search-dialog-head"><h2 id="search-title">Поиск по сайту</h2>
+      <form method="dialog"><button class="btn btn-icon" aria-label="Закрыть поиск"><span data-icon="close" data-icon-class="" aria-hidden="true"></span></button></form>
+    </div>
+    <form role="search"><label for="site-query" class="visually-hidden">Введите запрос</label>
+      <input class="form-control" type="search" id="site-query" placeholder="Курс, раздел или тема" autocomplete="off">
+    </form>
+    <p id="site-results-count" role="status"></p><ul id="site-results" class="list-unstyled"></ul>
+  </dialog>
+  <p class="site-status" id="site-status" role="status"></p>
 </body>
 </html>

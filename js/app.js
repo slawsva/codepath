@@ -1,130 +1,5 @@
-const courses = [
-  { id: 'python', title: 'Python с нуля', category: 'Программирование', level: 'Начальный', weeks: 6, price: 8900, description: 'Освойте синтаксис Python и напишите первую программу для автоматизации.', requirements: 'Достаточно уверенно пользоваться компьютером.', modules: ['Переменные, условия и циклы', 'Функции и коллекции', 'Работа с файлами', 'Проект: автоматизация отчёта'] },
-  { id: 'frontend', title: 'Frontend-разработка', category: 'Программирование', level: 'Начальный', weeks: 8, price: 12900, description: 'Сверстайте адаптивный сайт и добавьте интерактивность на JavaScript.', requirements: 'Опыт программирования не требуется.', modules: ['Семантика HTML', 'CSS и адаптивная сетка', 'JavaScript и события', 'Проект: сайт веломастерской'] },
-  { id: 'machine-learning', title: 'Машинное обучение', category: 'Машинное обучение', level: 'Средний', weeks: 10, price: 19900, description: 'Научитесь готовить данные, обучать модели и оценивать качество прогнозов.', requirements: 'Знание Python и основ статистики.', modules: ['Подготовка данных', 'Регрессия и классификация', 'Метрики и кросс-валидация', 'Проект: модель прогноза'] },
-  { id: 'sql', title: 'SQL для анализа данных', category: 'Анализ данных', level: 'Начальный', weeks: 5, price: 7500, description: 'Пишите запросы, объединяйте таблицы и готовьте отчёты.', requirements: 'Навык работы с электронными таблицами будет полезен.', modules: ['Выборка и фильтрация', 'Агрегирование', 'Объединение таблиц', 'Проект: аналитический отчёт'] },
-  { id: 'data-python', title: 'Анализ данных на Python', category: 'Анализ данных', level: 'Средний', weeks: 7, price: 14500, description: 'Очистите набор данных, проверьте гипотезу и представьте результаты на графиках.', requirements: 'Базовый Python: функции и коллекции.', modules: ['Таблицы в pandas', 'Очистка данных', 'Визуализация', 'Проект: анализ спроса на велопрокат'] },
-  { id: 'deep-learning', title: 'Нейронные сети', category: 'Машинное обучение', level: 'Продвинутый', weeks: 12, price: 25900, description: 'Создайте и обучите нейронную сеть для классификации изображений.', requirements: 'Python, основы линейной алгебры и машинного обучения.', modules: ['Тензоры и обучение', 'Полносвязные сети', 'Свёрточные сети', 'Проект: классификация изображений'] },
-];
-
-const byId = (id) => document.getElementById(id);
-const currency = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 });
-const courseParam = new URLSearchParams(location.search).get('course');
-
-const directions = new Map([
-  ['code', 'Программирование'],
-  ['data', 'Анализ данных'],
-  ['ml', 'Машинное обучение'],
-]);
-const savedKey = 'codepath-saved-courses';
-
-function readSavedCourses() {
-  try {
-    const ids = JSON.parse(localStorage.getItem(savedKey));
-    if (Array.isArray(ids)) return new Set(ids.filter((id) => courses.some((course) => course.id === id)));
-  } catch {
-    // Saving still works on the current page if storage is unavailable.
-  }
-  return new Set();
-}
-
-const savedCourses = readSavedCourses();
-const bookmarkIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h12v16l-6-4-6 4Z"/></svg>';
-
-function bookmarkButton(course) {
-  return `<button class="btn bookmark-button" type="button" data-bookmark="${course.id}" aria-label="Избранное: ${course.title}" aria-pressed="${savedCourses.has(course.id)}" title="Избранное">${bookmarkIcon}</button>`;
-}
-
-document.addEventListener('click', (event) => {
-  const button = event.target.closest('[data-bookmark]');
-  if (!button) return;
-  const courseId = button.dataset.bookmark;
-  if (savedCourses.has(courseId)) savedCourses.delete(courseId);
-  else savedCourses.add(courseId);
-  try {
-    localStorage.setItem(savedKey, JSON.stringify([...savedCourses]));
-  } catch {
-    // Keep the new selection in memory for this page.
-  }
-  button.setAttribute('aria-pressed', String(savedCourses.has(courseId)));
-  if (byId('saved-only')?.checked) {
-    byId('filters').dispatchEvent(new Event('input'));
-    (byId('courses').querySelector('[data-bookmark]') || byId('result-count')).focus({ preventScroll: true });
-  }
-});
-
-function renderCards(items) {
-  // The cards use the course data defined above, not text typed into the filters.
-  byId('courses').innerHTML = items.map((course) => `
-    <div class="col-12 col-md-6 col-lg-4">
-      <article class="card course-card h-100">
-        <div class="course-cover">
-          <a href="product.html?course=${course.id}" aria-label="Программа курса «${course.title}»">
-            <img src="images/photos/${course.id}.jpg" alt="" width="960" height="640" loading="lazy">
-          </a>
-          ${bookmarkButton(course)}
-        </div>
-        <div class="card-body">
-          <p class="eyebrow">${course.category}</p>
-          <h3>${course.title}</h3>
-          <p>${course.description}</p>
-          <div class="d-flex flex-wrap gap-2 mb-3">
-            <span class="badge">${course.level}</span><span class="badge">Недель: ${course.weeks}</span>
-          </div>
-          <div class="card-bottom">
-            <span class="course-price">${currency.format(course.price)}</span>
-            <a class="inline-link" href="product.html?course=${course.id}" aria-label="Подробнее о курсе «${course.title}»">Подробнее <span aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-      </article>
-    </div>`).join('');
-}
-
-function setupCatalog() {
-  const filters = byId('filters');
-  const query = byId('query');
-  const category = byId('category');
-  const level = byId('level');
-  const sort = byId('sort');
-  const savedOnly = byId('saved-only');
-  const params = new URLSearchParams(location.search);
-  for (const value of new Set(courses.map((course) => course.category))) category.add(new Option(value, value));
-  for (const value of new Set(courses.map((course) => course.level))) level.add(new Option(value, value));
-  category.value = directions.get(params.get('direction')) || '';
-  savedOnly.checked = params.get('saved') === '1';
-
-  function update() {
-    const term = query.value.trim().toLocaleLowerCase('ru');
-    const results = courses.filter((course) => {
-      const searchable = `${course.title} ${course.description} ${course.category}`.toLocaleLowerCase('ru');
-      return searchable.includes(term) && (!category.value || course.category === category.value)
-        && (!level.value || course.level === level.value)
-        && (!savedOnly.checked || savedCourses.has(course.id));
-    });
-    if (sort.value === 'price') results.sort((first, second) => first.price - second.price);
-    if (sort.value === 'duration') results.sort((first, second) => first.weeks - second.weeks);
-    renderCards(results);
-    byId('result-count').textContent = `Курсов найдено: ${results.length}`;
-    byId('empty').hidden = results.length !== 0;
-    byId('empty-detail').textContent = savedOnly.checked && !savedCourses.size
-      ? 'Список пока пуст. Отключите фильтр и нажмите значок закладки на карточке курса.'
-      : 'Попробуйте другой запрос или сбросьте фильтры.';
-  }
-  filters.addEventListener('input', update);
-  filters.addEventListener('submit', (event) => {
-    event.preventDefault();
-    update();
-  });
-  byId('reset').addEventListener('click', () => {
-    filters.reset();
-    query.focus();
-    update();
-  });
-  update();
-}
-
 function renderCourse() {
-  const course = courses.find((item) => item.id === courseParam);
+  const course = getCourse(params.get('course'));
   const section = byId('course');
   if (!course) {
     section.innerHTML = `<section class="page-intro"><div class="container">
@@ -134,27 +9,27 @@ function renderCourse() {
     </div></section>`;
     return;
   }
+  byId('product-crumb').textContent = course.title;
   document.title = `${course.title} — CodePath`;
   section.innerHTML = `
     <section class="page-intro course-intro">
       <div class="container">
-        <a class="inline-link breadcrumb-link" href="catalog.html">← Каталог</a>
         <div class="row g-4 g-lg-5 align-items-center">
           <div class="col-12 col-lg-7">
             <p class="eyebrow">${course.category} / Программа</p>
             <h1>${course.title}</h1><p class="intro">${course.description}</p>
             <dl class="course-facts">
+              <div><dt>Автор программы</dt><dd>${courseProviders[course.id]}</dd></div>
               <div><dt>Уровень</dt><dd>${course.level}</dd></div>
               <div><dt>Длительность</dt><dd>${course.weeks} нед.</dd></div>
-              <div><dt>Стоимость</dt><dd>${currency.format(course.price)}</dd></div>
+              <div><dt>Стоимость</dt><dd>${money(course.price)}</dd></div>
             </dl>
             <div class="d-flex flex-wrap gap-2">
-              <a class="btn btn-accent" href="order.html?course=${course.id}">Записаться <span aria-hidden="true">↗</span></a>
+              <button class="btn btn-accent" type="button" data-add-cart="${course.id}">Добавить в корзину</button>
               <button class="btn btn-line" type="button" data-bs-toggle="modal" data-bs-target="#details">Как проходит обучение</button>
-              ${bookmarkButton(course)}
             </div>
           </div>
-          <div class="col-12 col-lg-5"><img class="feature-art course-photo" src="images/photos/${course.id}.jpg" alt="" width="960" height="640"></div>
+          <div class="col-12 col-lg-5">${photoGallery([course.id, extraPhotos[course.id]], course.title)}</div>
         </div>
       </div>
     </section>
@@ -178,28 +53,104 @@ function renderCourse() {
     </section>`;
 }
 
-function setupEnrollment() {
-  const form = byId('enrollment');
-  const select = byId('selected-course');
-  const confirmation = byId('confirmation');
-  for (const course of courses) select.add(new Option(course.title, course.id));
-  if (courses.some((course) => course.id === courseParam)) select.value = courseParam;
-  form.addEventListener('input', () => { confirmation.hidden = true; });
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const course = courses.find((item) => item.id === select.value);
-    if (!course) return;
-    confirmation.textContent = `Демонстрационная заявка на курс «${course.title}» подтверждена.`;
-    confirmation.hidden = false;
-    confirmation.focus();
+function renderCards(items) {
+  byId('courses').innerHTML = items.map((course) => `
+    <div class="col-12 col-md-6 col-xl-4">
+      <article class="card course-card h-100">
+        ${photoGallery([course.id, extraPhotos[course.id]], course.title)}
+        <div class="card-body">
+          <p class="card-provider">${courseProviders[course.id]} · ${course.category}</p>
+          <h3>${course.title}</h3>
+          <p>${course.description}</p>
+          <p class="course-spec">${course.level} уровень · ${course.weeks} нед.</p>
+          <div class="course-buy">
+            <strong>${money(course.price)}</strong>
+            <div class="d-flex flex-wrap gap-2 mt-2">
+              <a class="btn btn-line" href="product.html?course=${course.id}">Подробнее<span class="visually-hidden"> о курсе «${course.title}»</span></a>
+              <button class="btn btn-accent" type="button" data-add-cart="${course.id}" aria-label="Добавить курс «${course.title}»">Добавить</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  `).join('');
+}
+
+function setupCatalog() {
+  const form = byId('filters');
+  const { query, category, provider, limit, sort } = form.elements;
+  const filterPanel = byId('filter-panel');
+  const initialCategory = { code: 'Программирование', data: 'Анализ данных', ml: 'Машинное обучение' };
+  for (const value of new Set(courses.map((course) => course.category))) category.add(new Option(value, value));
+  for (const value of new Set(Object.values(courseProviders))) provider.add(new Option(value, value));
+  category.value = initialCategory[params.get('direction')] || '';
+  query.value = params.get('q') || '';
+  if (category.value) filterPanel.open = true;
+
+  function update() {
+    const term = query.value.trim().toLowerCase();
+    const results = courses.filter((course) => {
+      const searchable = `${course.title} ${course.description} ${course.category} ${courseProviders[course.id]}`.toLowerCase();
+      return searchable.includes(term) && (!category.value || category.value === course.category)
+        && (!provider.value || provider.value === courseProviders[course.id])
+        && (!limit.value || course.price <= Number(limit.value));
+    });
+    if (sort.value === 'price') results.sort((a, b) => a.price - b.price);
+    if (sort.value === 'duration') results.sort((a, b) => a.weeks - b.weeks);
+    renderCards(results);
+    byId('result-count').textContent = `Курсов найдено: ${results.length}`;
+    byId('empty').hidden = Boolean(results.length);
+  }
+
+  byId('reset-filters').addEventListener('click', () => {
     form.reset();
-    select.value = course.id;
+    query.focus();
+    update();
   });
+  byId('reset').addEventListener('click', () => byId('reset-filters').click());
+  form.addEventListener('input', update);
+  form.addEventListener('submit', (event) => { event.preventDefault(); update(); });
+  update();
+}
+
+function setupReviews() {
+  const rail = byId('review-rail');
+  const pause = byId('pause-reviews');
+  const preference = matchMedia('(prefers-reduced-motion: reduce)');
+  let paused = preference.matches;
+  let interacting = false;
+  function renderPause() {
+    pause.textContent = paused ? 'Продолжить' : 'Пауза';
+    pause.setAttribute('aria-pressed', String(paused));
+  }
+  pause.addEventListener('click', () => { paused = !paused; renderPause(); });
+  rail.addEventListener('pointerenter', () => { interacting = true; });
+  rail.addEventListener('pointerleave', () => { interacting = false; });
+  for (const direction of [-1, 1]) {
+    byId(direction < 0 ? 'reviews-prev' : 'reviews-next').addEventListener('click', () => {
+      rail.scrollBy({ left: direction * (rail.querySelector('article').offsetWidth + 16), behavior: preference.matches ? 'auto' : 'smooth' });
+    });
+  }
+  setInterval(() => {
+    if (paused || interacting || rail.contains(document.activeElement) || rail.querySelector('details[open]')) return;
+    const end = rail.scrollWidth - rail.clientWidth;
+    if (rail.scrollLeft >= end - 2) rail.scrollTo({ left: 0, behavior: 'auto' });
+    else rail.scrollLeft += 1;
+  }, 38);
+  renderPause();
 }
 
 switch (document.body.dataset.page) {
-  case 'index': renderCards(courses.slice(0, 3)); break;
+  case 'index': renderCards(courses.slice(0, 3)); setupReviews(); break;
   case 'catalog': setupCatalog(); break;
   case 'product': renderCourse(); break;
-  case 'order': setupEnrollment(); break;
+  case 'contacts':
+    byId('feedback').addEventListener('submit', (event) => {
+      event.preventDefault();
+      event.currentTarget.reset();
+      byId('feedback-status').textContent = 'Поля проверены. Сообщение в демонстрационной форме не отправляется.';
+      byId('feedback-status').hidden = false;
+      byId('feedback-status').focus();
+    });
+    break;
 }

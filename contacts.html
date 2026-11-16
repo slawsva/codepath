@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>Контакты — CodePath</title>
+  <meta name="description" content="График команды, форма обратной связи и карта.">
+  <script src="js/theme.js"></script>
+  <link rel="icon" href="images/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/shop.css">
+  <script src="vendor/bootstrap.bundle.min.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/store.js" defer></script>
+  <script src="js/site.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/commerce.js" defer></script>
+  <script src="js/map.js" defer></script>
+</head>
+<body id="top" data-page="contacts">
+  <a class="skip-link" href="#main">К содержанию</a>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg container" aria-label="Основная навигация">
+      <a class="navbar-brand" href="index.html"><span class="brand-mark" aria-hidden="true">⌘</span><span>Code<span class="brand-path">Path</span></span></a>
+      <div class="header-tools">
+        <a class="btn btn-line account-link" href="account.html" aria-label="Личный кабинет"><span data-icon="user" data-icon-class="" aria-hidden="true"></span><span class="account-label">Кабинет</span></a>
+        <a class="btn btn-icon cart-link" id="cart-link" href="order.html" aria-label="Корзина"><span data-icon="cart" data-icon-class="" aria-hidden="true"></span><span id="cart-count" class="cart-count" hidden>0</span></a>
+        <button class="btn btn-icon" id="open-search" type="button" aria-label="Поиск по сайту" aria-haspopup="dialog" title="Поиск"><span data-icon="search" data-icon-class="" aria-hidden="true"></span></button>
+        <button class="btn btn-icon" type="button" data-theme-toggle aria-label="Тёмная тема" aria-pressed="false" title="Сменить тему"><span data-icon="moon" data-icon-class="theme-moon" aria-hidden="true"></span><span data-icon="sun" data-icon-class="theme-sun" aria-hidden="true"></span></button>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Меню"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+            <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
+            <li class="nav-item"><a class="nav-link" href="builder.html">Подбор</a></li>
+            <li class="nav-item"><a class="nav-link" href="learning.html">Как учимся</a></li>
+            <li class="nav-item"><a class="nav-link active" href="contacts.html" aria-current="page">Контакты</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <nav class="container breadcrumb-wrap" aria-label="Хлебные крошки">
+      <ol class="breadcrumb mb-0"><li class="breadcrumb-item"><a href="index.html">Главная</a></li><li class="breadcrumb-item active" aria-current="page">Контакты</li></ol>
+    </nav>
+    <section class="page-intro shop-intro"><div class="container"><h1>Контакты</h1><p class="intro">К кому обратиться с вопросом о программе, заказе или доступе к курсу.</p></div></section>
+    <section class="section inner-body" aria-labelledby="team-title"><div class="container">
+      <div class="section-heading"><div><h2 id="team-title">Команда</h2><p class="intro">Имена, телефоны и график приведены для демонстрации.</p></div></div>
+      <div class="row g-3">
+          <div class="col-md-6"><article class="shop-panel person-card h-100">
+            <div class="person-heading"><span class="avatar" aria-hidden="true">АК</span><div><h3>Анна Корнеева</h3><p>Координатор курсов</p></div></div>
+            <ul class="list-unstyled">
+              <li><span data-icon="phone" data-icon-class="" aria-hidden="true"></span><a href="tel:+74950000001">+7 (495) 000-00-01</a></li>
+              <li><span data-icon="mail" data-icon-class="" aria-hidden="true"></span><a href="mailto:programs@example.com">programs@example.com</a></li>
+              <li><span data-icon="clock" data-icon-class="" aria-hidden="true"></span><span>Пн–Пт, 10:00–16:00 (МСК)</span></li>
+            </ul>
+          </article></div>
+          <div class="col-md-6"><article class="shop-panel person-card h-100">
+            <div class="person-heading"><span class="avatar" aria-hidden="true">МС</span><div><h3>Михаил Степанов</h3><p>Вопросы по заказам</p></div></div>
+            <ul class="list-unstyled">
+              <li><span data-icon="phone" data-icon-class="" aria-hidden="true"></span><a href="tel:+74950000002">+7 (495) 000-00-02</a></li>
+              <li><span data-icon="mail" data-icon-class="" aria-hidden="true"></span><a href="mailto:orders@example.com">orders@example.com</a></li>
+              <li><span data-icon="clock" data-icon-class="" aria-hidden="true"></span><span>Вт–Сб, 11:00–19:00 (МСК)</span></li>
+            </ul>
+          </article></div>
+          <div class="col-md-6"><article class="shop-panel person-card h-100">
+            <div class="person-heading"><span class="avatar" aria-hidden="true">ЕВ</span><div><h3>Елена Власова</h3><p>Возвраты и отмены</p></div></div>
+            <ul class="list-unstyled">
+              <li><span data-icon="phone" data-icon-class="" aria-hidden="true"></span><a href="tel:+74950000003">+7 (495) 000-00-03</a></li>
+              <li><span data-icon="mail" data-icon-class="" aria-hidden="true"></span><a href="mailto:returns@example.com">returns@example.com</a></li>
+              <li><span data-icon="clock" data-icon-class="" aria-hidden="true"></span><span>Пн, Ср, Пт, 12:00–17:00 (МСК)</span></li>
+            </ul>
+          </article></div>
+          <div class="col-md-6"><article class="shop-panel person-card h-100">
+            <div class="person-heading"><span class="avatar" aria-hidden="true">ДК</span><div><h3>Денис Ким</h3><p>Техническая поддержка</p></div></div>
+            <ul class="list-unstyled">
+              <li><span data-icon="phone" data-icon-class="" aria-hidden="true"></span><a href="tel:+74950000004">+7 (495) 000-00-04</a></li>
+              <li><span data-icon="mail" data-icon-class="" aria-hidden="true"></span><a href="mailto:support@example.com">support@example.com</a></li>
+              <li><span data-icon="clock" data-icon-class="" aria-hidden="true"></span><span>Ежедневно, 14:00–20:00 (МСК)</span></li>
+            </ul>
+          </article></div>
+      </div>
+    </div></section>
+    <section class="section contact-location" id="location" aria-labelledby="location-title"><div class="container">
+      <div class="section-heading"><div><h2 id="location-title">Адрес и карта</h2><p class="intro">Карта показывает пример точки встречи. Приём по этому адресу не ведётся.</p></div></div>
+      <p class="address-line"><span data-icon="pin" data-icon-class="" aria-hidden="true"></span><a href="https://www.openstreetmap.org/?mlat=55.752672&amp;mlon=37.668913#map=17/55.752672/37.668913" target="_blank" rel="noopener">Москва, Нижняя Сыромятническая, 10</a></p>
+      <div class="local-map">
+        <svg id="contact-map" class="contact-map" role="img" tabindex="0" aria-label="Интерактивная карта района ARTPLAY" aria-describedby="map-help" viewBox="0 0 1000 620">
+          <image href="images/contact-map.svg" width="1000" height="620"></image>
+        </svg>
+        <div class="map-tools">
+          <button class="btn btn-line" id="map-in" type="button" aria-label="Увеличить масштаб">+</button>
+          <button class="btn btn-line" id="map-out" type="button" aria-label="Уменьшить масштаб">−</button>
+          <button class="btn btn-line" id="map-reset" type="button">Сбросить</button>
+        </div>
+        <a class="map-credit" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© участники OpenStreetMap</a>
+      </div>
+      <p id="map-help" class="map-help">Перетаскивайте карту мышью или пальцем. С клавиатуры используйте стрелки и клавиши + / −.</p>
+    </div></section>
+    <section class="section inner-body" aria-labelledby="feedback-title"><div class="container shop-grid">
+      <div><h2 id="feedback-title">Напишите нам</h2><p class="intro">Укажите тему и опишите вопрос. Форма покажет, все ли обязательные поля заполнены.</p></div>
+      <div class="shop-panel"><form method="post" id="feedback">
+        <label class="form-label" for="feedback-name">Имя</label><input class="form-control mb-3" id="feedback-name" autocomplete="name" required maxlength="70" pattern=".*\S.*">
+        <label class="form-label" for="feedback-email">Электронная почта</label><input class="form-control mb-3" id="feedback-email" type="email" autocomplete="email" required maxlength="100">
+        <label class="form-label" for="feedback-topic">Тема</label><select class="form-select mb-3" id="feedback-topic" required><option value="">Выберите тему</option><option>Подбор курса</option><option>Заказ</option><option>Технический вопрос</option></select>
+        <label class="form-label" for="feedback-text">Сообщение</label><textarea class="form-control mb-3" id="feedback-text" rows="4" required minlength="10" maxlength="1500"></textarea>
+        <button class="btn btn-accent" type="submit">Проверить и отправить</button>
+      </form><p id="feedback-status" class="inline-status" role="status" tabindex="-1" hidden></p></div>
+    </div></section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-12 col-md-5">
+          <a class="footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true">⌘</span><span>Code<span class="brand-path">Path</span></span></a>
+          <p class="footer-description">Курсы по программированию и анализу данных. Соберите маршрут под свою задачу и завершите его собственным проектом.</p>
+        </div>
+        <nav class="col-6 col-md-3" aria-label="Навигация в футере">
+          <h2>Разделы</h2>
+          <ul class="list-unstyled mb-0">
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="builder.html">Подбор курсов</a></li>
+            <li><a href="learning.html">Как учимся</a></li>
+            <li><a href="projects.html">Проекты</a></li>
+          </ul>
+        </nav>
+        <div class="col-6 col-md-4 footer-contact">
+          <h2>Связь</h2>
+          <p><a href="contacts.html">Команда и график</a></p>
+          <p><a href="contacts.html#location">Москва, Нижняя Сыромятническая, 10</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 CodePath. Все права защищены.</p>
+        <a class="btn back-top" href="#top" aria-label="Наверх" title="Наверх"><span data-icon="up" data-icon-class="" aria-hidden="true"></span></a>
+      </div>
+    </div>
+  </footer>
+  <dialog class="search-dialog" id="site-search" aria-labelledby="search-title">
+    <div class="search-dialog-head"><h2 id="search-title">Поиск по сайту</h2>
+      <form method="dialog"><button class="btn btn-icon" aria-label="Закрыть поиск"><span data-icon="close" data-icon-class="" aria-hidden="true"></span></button></form>
+    </div>
+    <form role="search"><label for="site-query" class="visually-hidden">Введите запрос</label>
+      <input class="form-control" type="search" id="site-query" placeholder="Курс, раздел или тема" autocomplete="off">
+    </form>
+    <p id="site-results-count" role="status"></p><ul id="site-results" class="list-unstyled"></ul>
+  </dialog>
+  <p class="site-status" id="site-status" role="status"></p>
+</body>
+</html>
