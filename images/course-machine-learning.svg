@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="320" viewBox="0 0 640 320">
+  <defs><pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0v28" fill="none" stroke="#ecd1bd"/></pattern></defs>
+  <path d="M0 0h640v320H0z" fill="#f5e3d4"/>
+  <path d="M0 0h640v320H0z" fill="url(#grid)"/>
+  <g fill="none" stroke="#794c38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M27 47V27h20m546 0h20v20M27 273v20h20m546 0h20v-20"/>
+
+    <path d="M142 248h354M161 266V61" stroke-width="3"/>
+    <path d="M175 231l305-151" stroke-dasharray="9 9" stroke-width="4"/>
+    <g fill="#f9f1df"><circle cx="204" cy="205" r="10"/><circle cx="239" cy="178" r="10"/><circle cx="256" cy="219" r="10"/><circle cx="294" cy="165" r="10"/><circle cx="330" cy="152" r="10"/><circle cx="368" cy="146" r="10"/></g>
+    <g fill="#dc9876"><circle cx="315" cy="114" r="10"/><circle cx="391" cy="104" r="10"/><circle cx="423" cy="134" r="10"/><circle cx="445" cy="80" r="10"/></g>
+    <path d="M96 73h40m-20-20v40m397 119h40m-20-20v40"/>
+  </g>
+</svg>

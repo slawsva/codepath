@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="610" viewBox="0 0 700 610">
+  <defs>
+    <pattern id="grid" width="35" height="35" patternUnits="userSpaceOnUse"><path d="M35 0H0v35" fill="none" stroke="#7565ab" stroke-opacity=".35"/></pattern>
+    <pattern id="lines" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0v8" stroke="#a898e4" stroke-opacity=".5" stroke-width="2"/></pattern>
+    <linearGradient id="wall" x2="1" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#463487"/><stop offset="1" stop-color="#2b2253"/></linearGradient>
+    <filter id="shadow" x="-.15" y="-.2" width="1.35" height="1.55"><feDropShadow dx="0" dy="15" stdDeviation="16" flood-color="#170e39" flood-opacity=".5"/></filter>
+  </defs>
+  <path fill="url(#wall)" d="M0 0h700v610H0z"/>
+  <path fill="url(#grid)" d="M0 0h700v610H0z"/>
+  <path fill="url(#lines)" d="M511 0h189v187H511zM0 452h189v158H0z"/>
+  <g fill="none" stroke="#a797db" stroke-width="1">
+    <circle cx="350" cy="305" r="250" opacity=".52"/>
+    <path d="M350 23v564M46 305h608" opacity=".6" stroke-dasharray="3 8"/>
+    <path d="M26 60V26h34M640 26h34v34M26 550v34h34M640 584h34v-34" stroke="#d7caef"/>
+  </g>
+  <g fill="#ece2ff" font-family="monospace" font-weight="bold" font-size="15" letter-spacing="2">
+    <text x="54" y="60">CODEPATH / LAB</text><text x="603" y="561">01.01</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="62" y="105" width="544" height="365" rx="13" fill="#211c32" stroke="#8b7cb2" stroke-width="2"/>
+    <path d="M62 151h544M111 151v318" stroke="#5b5075"/>
+    <circle cx="85" cy="128" r="5" fill="#f6a795"/><circle cx="102" cy="128" r="5" fill="#eada97"/><circle cx="119" cy="128" r="5" fill="#d9fa83"/>
+    <rect x="134" y="152" width="140" height="40" fill="#352b49"/>
+    <path d="M135 191h139" stroke="#c4abff" stroke-width="3"/>
+    <g font-family="monospace" font-weight="bold">
+      <text x="321" y="133" fill="#d5cbe5" font-size="16">workspace</text>
+      <text x="151" y="177" fill="#eee6fb" font-size="18">main.py</text>
+      <text x="82" y="191" fill="#c2aef5" font-size="21">⌘</text>
+      <g fill="#b7abcb" font-size="18">
+        <text x="135" y="231">01</text><text x="135" y="272">02</text><text x="135" y="313">03</text><text x="135" y="354">04</text>
+      </g>
+      <g fill="#eee6fb" font-size="24">
+        <text x="179" y="231"><tspan fill="#c6a9ff">def</tspan> hello(name):</text>
+        <text x="207" y="272"><tspan fill="#c6a9ff">return</tspan> <tspan fill="#d9fa83">f"Привет, {name}!"</tspan></text>
+        <text x="179" y="354"><tspan fill="#f0bc94">print</tspan>(hello(<tspan fill="#d9fa83">"мир"</tspan>))</text>
+      </g>
+    </g>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="287" y="388" width="357" height="146" rx="10" fill="#f2ecff" stroke="#decef9" stroke-width="2"/>
+    <path d="M287 423h357" stroke="#c6b9da"/>
+    <circle cx="310" cy="406" r="4" fill="#604294"/>
+    <g font-family="monospace" fill="#31244b" font-weight="bold">
+      <text x="324" y="412" font-size="15" letter-spacing="2">ТЕРМИНАЛ</text>
+      <text x="310" y="460" font-size="22">$ python main.py</text>
+      <text x="310" y="500" font-size="22">Привет, мир!</text>
+    </g>
+    <path fill="#674ab0" d="M486 482h12v22h-12z"/>
+  </g>
+  <g transform="translate(572 75)">
+    <rect width="70" height="67" rx="12" fill="#d9fa83"/>
+    <path d="M21 22l10 11-10 11m16 0h13" fill="none" stroke="#242a15" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

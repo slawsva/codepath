@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="320" viewBox="0 0 640 320">
+  <defs><pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0v28" fill="none" stroke="#e0d0ec"/></pattern></defs>
+  <path d="M0 0h640v320H0z" fill="#eee4f5"/>
+  <path d="M0 0h640v320H0z" fill="url(#grid)"/>
+  <g fill="none" stroke="#674983" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M27 47V27h20m546 0h20v20M27 273v20h20m546 0h20v-20"/>
+
+    <g stroke="#9e7bb6"><path d="M160 90l160 18-160 52 160 52-160 18m0-140 160 122m-160 18 160-122M320 108l160 52-160 52m0-104 160-60-160 164 160 60-160-164"/></g>
+    <g fill="#f7edfc" stroke-width="3"><circle cx="160" cy="90" r="15"/><circle cx="160" cy="160" r="15"/><circle cx="160" cy="230" r="15"/></g>
+    <g fill="#cbb5ed" stroke-width="3"><circle cx="320" cy="108" r="20"/><circle cx="320" cy="212" r="20"/></g>
+    <g fill="#a98acf" stroke-width="3"><circle cx="480" cy="48" r="15"/><circle cx="480" cy="160" r="15"/><circle cx="480" cy="272" r="15"/></g>
+  </g>
+</svg>

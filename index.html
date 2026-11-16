@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f3">
+  <title>Главная — CodePath</title>
+  <meta name="description" content="Каталог курсов по программированию, анализу данных и машинному обучению.">
+  <link rel="icon" href="images/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <script src="vendor/bootstrap.bundle.min.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body id="top" data-page="index">
+  <a class="skip-link" href="#main">К содержанию</a>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md container" aria-label="Основная навигация">
+      <a class="navbar-brand" href="index.html"><span class="brand-mark" aria-hidden="true">⌘</span><span>Code<span class="brand-path">Path</span></span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Меню"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page">Главная</a></li>
+            <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
+            <li class="nav-item"><a class="nav-link" href="learning.html">Как учимся</a></li>
+            <li class="nav-item"><a class="nav-link" href="projects.html">Проекты</a></li>
+        </ul>
+        <a class="btn btn-line header-cta" href="order.html">Записаться <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="home-hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="row hero-grid align-items-center gy-4">
+          <div class="col-12 col-lg-6 hero-copy">
+            <p class="eyebrow"><span class="status-dot"></span> Онлайн-курсы по коду и данным</p>
+            <h1 id="hero-title">От первой<br>строки<br><em>к проекту.</em></h1>
+            <p class="intro">Напишите программу на Python, сверстайте сайт или разберитесь в данных. Выберите курс по тому, что хочется сделать своими руками.</p>
+            <div class="d-flex flex-wrap align-items-center hero-actions">
+              <a class="btn btn-accent" href="catalog.html">Смотреть курсы <span aria-hidden="true">↗</span></a>
+              <a class="inline-link" href="projects.html">Примеры проектов <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <figure class="hero-figure">
+              <img src="images/hero-workspace.svg" width="700" height="610" alt="Редактор с примером на Python и результатом запуска в терминале" fetchpriority="high">
+              <figcaption><span>РИС. 01 / РАБОЧАЯ СРЕДА</span><span>PYTHON, ПЕРВЫЙ ЗАПУСК</span></figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="hero-index">
+          <a href="#popular"><span aria-hidden="true">↓</span> К курсам</a>
+          <span>Python / Web / Data</span>
+        </div>
+      </div>
+    </section>
+    <section class="section popular-section" aria-labelledby="popular">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">01 / Каталог</p><h2 id="popular">Курсы CodePath</h2><p class="intro">Три программы, чтобы познакомиться с направлениями.</p></div>
+          <a class="inline-link" href="catalog.html">Весь каталог <span aria-hidden="true">↗</span></a>
+        </div>
+        <noscript><p class="alert alert-warning mt-3">Для этой страницы нужен JavaScript. Включите его в браузере и обновите страницу.</p></noscript>
+        <div class="row g-4" id="courses"></div>
+        <div class="catalog-note"><span>Не знаете, с чего начать?</span><a class="inline-link" href="learning.html">Посмотрите, как устроено обучение <span aria-hidden="true">→</span></a></div>
+      </div>
+    </section>
+    <section id="faq" class="section faq-section" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="row g-4 g-lg-5 align-items-start">
+          <div class="col-12 col-lg-5">
+            <p class="eyebrow">02 / Перед записью</p>
+            <h2 id="faq-title">Вопросы<br>и ответы</h2>
+            <p class="intro">Что нужно знать до выбора курса и как работает запись.</p>
+            <a class="inline-link" href="learning.html">Подробнее об обучении <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="col-12 col-lg-7"><div class="accordion cp-accordion" id="questions">
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#answer-1" aria-expanded="true" aria-controls="answer-1">С какого курса начать без опыта?</button>
+            </h3>
+            <div id="answer-1" class="accordion-collapse collapse show" data-bs-parent="#questions">
+              <div class="accordion-body">Если хочется писать программы, попробуйте «Python с нуля». Для создания сайтов подойдёт «Frontend-разработка», а для работы с таблицами и отчётами — «SQL для анализа данных».</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer-2" aria-expanded="false" aria-controls="answer-2">Можно ли учиться в своём темпе?</button>
+            </h3>
+            <div id="answer-2" class="accordion-collapse collapse" data-bs-parent="#questions">
+              <div class="accordion-body">Да. Срок в карточке — ориентир. Вы можете распределить занятия по своему расписанию и вернуться к сложному модулю позже.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer-3" aria-expanded="false" aria-controls="answer-3">Что получится в конце курса?</button>
+            </h3>
+            <div id="answer-3" class="accordion-collapse collapse" data-bs-parent="#questions">
+              <div class="accordion-body">У каждой программы свой итоговый проект: например, отчёт на Python, адаптивный сайт или модель прогноза. Смотрите итоговую работу в программе курса.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer-4" aria-expanded="false" aria-controls="answer-4">Что происходит после отправки заявки?</button>
+            </h3>
+            <div id="answer-4" class="accordion-collapse collapse" data-bs-parent="#questions">
+              <div class="accordion-body">Появляется подтверждение с названием выбранного курса. Это учебная форма: контакты не сохраняются и оплата не предусмотрена.</div>
+            </div>
+          </div>
+          </div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-5">
+        <div class="col-12 col-md-5">
+          <a class="footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true">⌘</span><span>Code<span class="brand-path">Path</span></span></a>
+          <p class="footer-description">Каталог учебных программ по коду и данным. Помогает сравнить курсы и понять, какой проект можно собрать после обучения.</p>
+        </div>
+        <nav class="col-6 col-md-3" aria-label="Навигация в подвале">
+          <h2>Разделы</h2>
+          <ul class="list-unstyled mb-0">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="learning.html">Как учимся</a></li>
+            <li><a href="projects.html">Проекты</a></li>
+          </ul>
+        </nav>
+        <div class="col-6 col-md-4">
+          <h2>С чего начать</h2>
+          <ul class="list-unstyled mb-0">
+            <li><a href="order.html">Запись на курс <span aria-hidden="true">↗</span></a></li>
+            <li><a href="index.html#faq">Вопросы и ответы</a></li>
+          </ul>
+          <p class="mt-3 mb-0">Учебный проект<br>Святослав Сакулин · 12-40</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 CodePath</span>
+        <a href="#top">Наверх <span aria-hidden="true">↑</span></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

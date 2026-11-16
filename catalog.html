@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f3">
+  <title>Каталог курсов — CodePath</title>
+  <meta name="description" content="Все курсы CodePath. Сравните направления, уровни и программы.">
+  <link rel="icon" href="images/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <script src="vendor/bootstrap.bundle.min.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body id="top" data-page="catalog">
+  <a class="skip-link" href="#main">К содержанию</a>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md container" aria-label="Основная навигация">
+      <a class="navbar-brand" href="index.html"><span class="brand-mark" aria-hidden="true">⌘</span><span>Code<span class="brand-path">Path</span></span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Меню"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+            <li class="nav-item"><a class="nav-link active" href="catalog.html" aria-current="page">Каталог</a></li>
+            <li class="nav-item"><a class="nav-link" href="learning.html">Как учимся</a></li>
+            <li class="nav-item"><a class="nav-link" href="projects.html">Проекты</a></li>
+        </ul>
+        <a class="btn btn-line header-cta" href="order.html">Записаться <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="page-intro split-intro">
+      <div class="container"><div class="row align-items-center g-4 g-lg-5">
+        <div class="col-12 col-lg-6"><p class="eyebrow">Каталог / Все направления</p><h1>Каталог курсов</h1><p class="intro">Найдите программу по названию или отфильтруйте курсы по теме и уровню подготовки.</p></div>
+        <div class="col-12 col-lg-6">
+      <div class="catalog-tile" aria-hidden="true">
+        <span>01 <b>Программирование</b></span><span>02 <b>Анализ данных</b></span><span>03 <b>Машинное обучение</b></span>
+      </div></div>
+      </div></div>
+    </section>
+    <section class="section inner-body catalog-body" aria-labelledby="catalog-list">
+      <div class="container">
+        <h2 id="catalog-list" class="visually-hidden">Список курсов</h2>
+        <noscript><p class="alert alert-warning mt-3">Для этой страницы нужен JavaScript. Включите его в браузере и обновите страницу.</p></noscript>
+        <form class="filters" role="search" id="filters">
+          <div><label class="form-label" for="query">Поиск</label><input class="form-control" id="query" type="search" placeholder="Например, Python"></div>
+          <div><label class="form-label" for="category">Направление</label><select class="form-select" id="category"><option value="">Все направления</option></select></div>
+          <div><label class="form-label" for="level">Уровень</label><select class="form-select" id="level"><option value="">Все уровни</option></select></div>
+        </form>
+        <p id="result-count" class="result-count" role="status"></p>
+        <div class="row g-4" id="courses"></div>
+        <div class="empty-state" id="empty" hidden><h3>Ничего не нашлось</h3><p>Попробуйте другой запрос или сбросьте фильтры.</p><button type="button" class="btn btn-line" id="reset">Сбросить фильтры</button></div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-5">
+        <div class="col-12 col-md-5">
+          <a class="footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true">⌘</span><span>Code<span class="brand-path">Path</span></span></a>
+          <p class="footer-description">Каталог учебных программ по коду и данным. Помогает сравнить курсы и понять, какой проект можно собрать после обучения.</p>
+        </div>
+        <nav class="col-6 col-md-3" aria-label="Навигация в подвале">
+          <h2>Разделы</h2>
+          <ul class="list-unstyled mb-0">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="learning.html">Как учимся</a></li>
+            <li><a href="projects.html">Проекты</a></li>
+          </ul>
+        </nav>
+        <div class="col-6 col-md-4">
+          <h2>С чего начать</h2>
+          <ul class="list-unstyled mb-0">
+            <li><a href="order.html">Запись на курс <span aria-hidden="true">↗</span></a></li>
+            <li><a href="index.html#faq">Вопросы и ответы</a></li>
+          </ul>
+          <p class="mt-3 mb-0">Учебный проект<br>Святослав Сакулин · 12-40</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 CodePath</span>
+        <a href="#top">Наверх <span aria-hidden="true">↑</span></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

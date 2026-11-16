@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="320" viewBox="0 0 640 320">
+  <defs><pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0v28" fill="none" stroke="#d0ddc4"/></pattern></defs>
+  <path d="M0 0h640v320H0z" fill="#e5edda"/>
+  <path d="M0 0h640v320H0z" fill="url(#grid)"/>
+  <g fill="none" stroke="#34513d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M27 47V27h20m546 0h20v20M27 273v20h20m546 0h20v-20"/>
+
+    <rect x="150" y="57" width="340" height="207" rx="14" fill="#f4f7e9"/>
+    <path d="M150 98h340"/>
+    <circle cx="175" cy="78" r="4" fill="#34513d"/><circle cx="191" cy="78" r="4"/><circle cx="207" cy="78" r="4"/>
+    <path d="M229 143l-27 23 27 23m181-46 27 23-27 23m-74-66-32 87" stroke-width="6"/>
+    <path d="M266 231h107" stroke-dasharray="4 8"/>
+    <rect x="445" y="224" width="81" height="51" rx="8" fill="#c7df93"/>
+    <text x="464" y="258" fill="#34513d" stroke="none" font-family="monospace" font-weight="bold" font-size="26">PY</text>
+  </g>
+</svg>

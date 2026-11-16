@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f3">
+  <title>Запись на курс — CodePath</title>
+  <meta name="description" content="Демонстрационная форма записи на курсы CodePath.">
+  <link rel="icon" href="images/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <script src="vendor/bootstrap.bundle.min.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body id="top" data-page="order">
+  <a class="skip-link" href="#main">К содержанию</a>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md container" aria-label="Основная навигация">
+      <a class="navbar-brand" href="index.html"><span class="brand-mark" aria-hidden="true">⌘</span><span>Code<span class="brand-path">Path</span></span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Меню"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+            <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
+            <li class="nav-item"><a class="nav-link" href="learning.html">Как учимся</a></li>
+            <li class="nav-item"><a class="nav-link" href="projects.html">Проекты</a></li>
+        </ul>
+        <a class="btn btn-line header-cta" href="order.html" aria-current="page">Записаться <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="page-intro enrollment-intro">
+      <div class="container"><div class="row g-4 g-lg-5 align-items-start">
+        <div class="col-12 col-lg-5"><p class="eyebrow">Запись / Учебная форма</p><h1>Запись<br>на курс</h1><p class="intro">Выберите программу и заполните форму, чтобы посмотреть, как выглядит подтверждение.</p><a class="inline-link" href="catalog.html">Вернуться к курсам <span aria-hidden="true">→</span></a></div>
+        <div class="col-12 col-lg-7">
+          <div class="form-panel">
+            <h2>Данные заявки</h2>
+            <p class="form-note">Данные не отправляются и не сохраняются.</p>
+            <noscript><p class="alert alert-warning mt-3">Для этой страницы нужен JavaScript. Включите его в браузере и обновите страницу.</p></noscript>
+            <form id="enrollment" method="post" class="row g-3">
+            <div class="col-12"><label for="selected-course" class="form-label">Курс</label><select id="selected-course" name="course" class="form-select" required><option value="">Выберите курс</option></select></div>
+            <div class="col-12"><label for="name" class="form-label">Имя</label><input id="name" name="name" class="form-control" autocomplete="name" required maxlength="100"></div>
+            <div class="col-12 col-md-6"><label for="email" class="form-label">Электронная почта</label><input id="email" name="email" type="email" class="form-control" autocomplete="email" required maxlength="254"></div>
+            <div class="col-12 col-md-6"><label for="phone" class="form-label">Телефон <small>(необязательно)</small></label><div class="input-group"><span class="input-group-text" aria-hidden="true">☎</span><input id="phone" name="phone" type="tel" class="form-control" autocomplete="tel" maxlength="30"></div></div>
+            <div class="col-12"><div class="form-check"><input id="confirm" name="confirm" type="checkbox" class="form-check-input" required><label for="confirm" class="form-check-label">Понимаю, что это демонстрационная заявка</label></div></div>
+            <div class="col-12"><button class="btn btn-accent" type="submit">Подтвердить заявку <span aria-hidden="true">↗</span></button></div>
+            </form>
+            <div class="alert alert-success mt-4 mb-0" id="confirmation" role="status" tabindex="-1" hidden></div>
+          </div>
+        </div>
+      </div></div>
+    </section>
+    <section class="section inner-body" aria-labelledby="before-enrollment">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">Навигация по проекту</p><h2 id="before-enrollment">Перед выбором курса</h2><p class="intro">Сверьте требования в программе, посмотрите на итоговую работу и решите, что хочется попробовать.</p></div></div>
+        <div class="link-rows">
+          <a href="catalog.html"><span>01</span><strong>Сравнить программы</strong><span aria-hidden="true">↗</span></a>
+          <a href="projects.html"><span>02</span><strong>Посмотреть примеры работ</strong><span aria-hidden="true">↗</span></a>
+          <a href="index.html#faq"><span>03</span><strong>Почитать вопросы и ответы</strong><span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-5">
+        <div class="col-12 col-md-5">
+          <a class="footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true">⌘</span><span>Code<span class="brand-path">Path</span></span></a>
+          <p class="footer-description">Каталог учебных программ по коду и данным. Помогает сравнить курсы и понять, какой проект можно собрать после обучения.</p>
+        </div>
+        <nav class="col-6 col-md-3" aria-label="Навигация в подвале">
+          <h2>Разделы</h2>
+          <ul class="list-unstyled mb-0">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="learning.html">Как учимся</a></li>
+            <li><a href="projects.html">Проекты</a></li>
+          </ul>
+        </nav>
+        <div class="col-6 col-md-4">
+          <h2>С чего начать</h2>
+          <ul class="list-unstyled mb-0">
+            <li><a href="order.html">Запись на курс <span aria-hidden="true">↗</span></a></li>
+            <li><a href="index.html#faq">Вопросы и ответы</a></li>
+          </ul>
+          <p class="mt-3 mb-0">Учебный проект<br>Святослав Сакулин · 12-40</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 CodePath</span>
+        <a href="#top">Наверх <span aria-hidden="true">↑</span></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
