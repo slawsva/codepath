@@ -11,12 +11,59 @@ const byId = (id) => document.getElementById(id);
 const currency = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB', maximumFractionDigits: 0 });
 const courseParam = new URLSearchParams(location.search).get('course');
 
+const directions = new Map([
+  ['code', 'Программирование'],
+  ['data', 'Анализ данных'],
+  ['ml', 'Машинное обучение'],
+]);
+const savedKey = 'codepath-saved-courses';
+
+function readSavedCourses() {
+  try {
+    const ids = JSON.parse(localStorage.getItem(savedKey));
+    if (Array.isArray(ids)) return new Set(ids.filter((id) => courses.some((course) => course.id === id)));
+  } catch {
+    // Saving still works on the current page if storage is unavailable.
+  }
+  return new Set();
+}
+
+const savedCourses = readSavedCourses();
+const bookmarkIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h12v16l-6-4-6 4Z"/></svg>';
+
+function bookmarkButton(course) {
+  return `<button class="btn bookmark-button" type="button" data-bookmark="${course.id}" aria-label="Избранное: ${course.title}" aria-pressed="${savedCourses.has(course.id)}" title="Избранное">${bookmarkIcon}</button>`;
+}
+
+document.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-bookmark]');
+  if (!button) return;
+  const courseId = button.dataset.bookmark;
+  if (savedCourses.has(courseId)) savedCourses.delete(courseId);
+  else savedCourses.add(courseId);
+  try {
+    localStorage.setItem(savedKey, JSON.stringify([...savedCourses]));
+  } catch {
+    // Keep the new selection in memory for this page.
+  }
+  button.setAttribute('aria-pressed', String(savedCourses.has(courseId)));
+  if (byId('saved-only')?.checked) {
+    byId('filters').dispatchEvent(new Event('input'));
+    (byId('courses').querySelector('[data-bookmark]') || byId('result-count')).focus({ preventScroll: true });
+  }
+});
+
 function renderCards(items) {
   // The cards use the course data defined above, not text typed into the filters.
   byId('courses').innerHTML = items.map((course) => `
     <div class="col-12 col-md-6 col-lg-4">
       <article class="card course-card h-100">
-        <img src="images/course-${course.id}.svg" alt="" width="640" height="320" loading="lazy">
+        <div class="course-cover">
+          <a href="product.html?course=${course.id}" aria-label="Программа курса «${course.title}»">
+            <img src="images/photos/${course.id}.jpg" alt="" width="960" height="640" loading="lazy">
+          </a>
+          ${bookmarkButton(course)}
+        </div>
         <div class="card-body">
           <p class="eyebrow">${course.category}</p>
           <h3>${course.title}</h3>
@@ -38,19 +85,30 @@ function setupCatalog() {
   const query = byId('query');
   const category = byId('category');
   const level = byId('level');
+  const sort = byId('sort');
+  const savedOnly = byId('saved-only');
+  const params = new URLSearchParams(location.search);
   for (const value of new Set(courses.map((course) => course.category))) category.add(new Option(value, value));
   for (const value of new Set(courses.map((course) => course.level))) level.add(new Option(value, value));
+  category.value = directions.get(params.get('direction')) || '';
+  savedOnly.checked = params.get('saved') === '1';
 
   function update() {
     const term = query.value.trim().toLocaleLowerCase('ru');
     const results = courses.filter((course) => {
       const searchable = `${course.title} ${course.description} ${course.category}`.toLocaleLowerCase('ru');
       return searchable.includes(term) && (!category.value || course.category === category.value)
-        && (!level.value || course.level === level.value);
+        && (!level.value || course.level === level.value)
+        && (!savedOnly.checked || savedCourses.has(course.id));
     });
+    if (sort.value === 'price') results.sort((first, second) => first.price - second.price);
+    if (sort.value === 'duration') results.sort((first, second) => first.weeks - second.weeks);
     renderCards(results);
     byId('result-count').textContent = `Курсов найдено: ${results.length}`;
     byId('empty').hidden = results.length !== 0;
+    byId('empty-detail').textContent = savedOnly.checked && !savedCourses.size
+      ? 'Список пока пуст. Отключите фильтр и нажмите значок закладки на карточке курса.'
+      : 'Попробуйте другой запрос или сбросьте фильтры.';
   }
   filters.addEventListener('input', update);
   filters.addEventListener('submit', (event) => {
@@ -93,9 +151,10 @@ function renderCourse() {
             <div class="d-flex flex-wrap gap-2">
               <a class="btn btn-accent" href="order.html?course=${course.id}">Записаться <span aria-hidden="true">↗</span></a>
               <button class="btn btn-line" type="button" data-bs-toggle="modal" data-bs-target="#details">Как проходит обучение</button>
+              ${bookmarkButton(course)}
             </div>
           </div>
-          <div class="col-12 col-lg-5"><img class="feature-art" src="images/course-${course.id}.svg" alt="" width="640" height="320"></div>
+          <div class="col-12 col-lg-5"><img class="feature-art course-photo" src="images/photos/${course.id}.jpg" alt="" width="960" height="640"></div>
         </div>
       </div>
     </section>
