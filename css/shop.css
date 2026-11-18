@@ -244,3 +244,19 @@
 .map-tools .btn { padding: .37rem .65rem; background-color: var(--white); }
 .map-credit { position: absolute; right: .35rem; bottom: .35rem; padding: .18rem .35rem; border-radius: .2rem; color: #162d29; background: #fff; font-size: .74rem; }
 .map-help { margin: .65rem 0 0; color: var(--muted); font-size: .9rem; }
+
+/* Desktop page length counts the main content, excluding the footer. */
+.page-guide { background: var(--soft); }
+@media (min-width: 992px) {
+  main { min-height: 325svh; display: flex; flex-direction: column; }
+  main > .section { padding-block: clamp(5rem, 9svh, 8rem); }
+  main > .page-intro { min-height: 65svh; display: grid; align-items: center; }
+  main > .page-guide { min-height: 95svh; flex-grow: 1; }
+  body[data-page="account"] .account-body,
+  body[data-page="order"] .order-body { min-height: 165svh; }
+  body[data-page="catalog"] .catalog-body { min-height: 165svh; }
+  body[data-page="contacts"] .section { min-height: 100svh; }
+  body[data-page="product"] #course { flex-grow: 1; display: flex; flex-direction: column; }
+  body[data-page="product"] .course-intro { min-height: 105svh; }
+  body[data-page="product"] .course-program { min-height: 215svh; align-items: start; }
+}
